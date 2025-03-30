@@ -7,25 +7,24 @@ Original file is located at
     https://colab.research.google.com/drive/1fBBl22UdVIJmCXinmUs61F6uiB6cl6t4
 """
 
-!pip install -q streamlit
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 import plotly.express as px
-from google.colab import drive
+import streamlit as st
+#from google.colab import drive
 from scipy.interpolate import make_interp_spline
 from sklearn.linear_model import LinearRegression
 
-!npm install localtunnel
 
-from google.colab import drive
-drive.mount('/content/drive')
+
 
 """# **Conexión Emisón Fosil**"""
 
-df = pd.read_csv("/content/drive/MyDrive/ProyectoAnalisisDatos/Datos/Datagit/emisionfosil_trabajar_2.csv", sep = ";")
+#df = pd.read_csv("/content/drive/MyDrive/ProyectoAnalisisDatos/Datos/Datagit/emisionfosil_trabajar_2.csv", sep = ";")
+df = pd.read_csv("/workspaces/ProyectoEnergiaColPy/emisionfosil_trabajar_2.csv", sep = ";")
 
 # Eliminar espacios en los nombres de las columnas
 df.columns = df.columns.str.strip()
@@ -48,8 +47,9 @@ df_sum = df.groupby('TipoIndustria', as_index=False)['Valor'].sum()
 # Calcular el porcentaje de cada industria sobre el total
 df_sum["Porcentaje"] = (df_sum["Valor"] / df_sum["Valor"].sum()) * 100
 
+
 # Verificar valores antes de graficar
-print(df_sum)
+#print(df_sum)
 
 # Crear la gráfica con Matplotlib
 fig, ax = plt.subplots(figsize=(12, 6))
@@ -67,11 +67,14 @@ ax.set_title("Porcentaje de emisiones según Tipo de Industria")
 ax.set_xticks(range(len(df_sum["TipoIndustria"])))
 ax.set_xticklabels(df_sum['TipoIndustria'], rotation=45, ha='right')
 
+
 # Guardar la imagen para subirla a GitHub
 plt.savefig("grafico_industria.png", bbox_inches="tight")
 plt.grid(True)
+st.pyplot(fig)
 # Mostrar la gráfica
-plt.show()
+#plt.show()
+
 
 #Creación de Gráfico por Tipo de Industria a través del tiempo
 # Convertir columnas a numérico
@@ -118,21 +121,23 @@ ax.legend(title="Tipo de Industria", bbox_to_anchor=(1.05, 1), loc="upper left")
 # Ajustar diseño
 plt.xticks(rotation=45)  # Rotar años para mejor lectura
 plt.tight_layout()  # Ajustar el gráfico
-
-fig.show()
+st.pyplot(fig)
+#fig.show()
 
 # Gráfico de barras: Emisiones por industria en un años específicos, esto si queremos ver un año puntual y la distribución
 anio_filtro = 2014  # Cambiamos acá el año según sea necesario
 df_anio = df[df['Anio'] == anio_filtro]
-plt.figure(figsize=(12, 6))
-sns.barplot(x='TipoIndustria', y='Valor', data=df_anio)
-plt.xticks(rotation=90)
-plt.xlabel('Industria')
-plt.ylabel('Emisiones de CO₂')
-plt.title(f'Emisiones de CO₂ por industria en {anio_filtro}')
+fig, ax = plt.subplots(figsize=(12, 6))
+sns.barplot(x='TipoIndustria', y='Valor', data=df_anio, ax=ax)
+ax.set_xticklabels(df_anio["TipoIndustria"], rotation=90)
+ax.set_xlabel('Industria')
+ax.set_ylabel('Emisiones de CO₂')
+ax.set_title(f'Emisiones de CO₂ por industria en {anio_filtro}')
 for i, v in enumerate(df_anio['Valor']):
-    plt.text(i, v, str(v), ha='center', va='bottom')
-plt.show()
+    ax.text(i, v, str(v), ha='center', va='bottom')
+
+st.pyplot(fig)
+#plt.show()
 
 # Agrupar por año y sumar emisiones
 emisiones_por_año = df.groupby('Anio')['Valor'].sum()
@@ -144,7 +149,7 @@ emisiones_max = emisiones_por_año.max()
 print(f"Año con más emisiones: {año_max} con {emisiones_max:.2f} toneladas de CO₂")
 
 #en está grafica podemos visualizar año a año el comportamioento de la cantidad de emisiones resaltando el año donde se presenta el pico
-plt.figure(figsize=(12, 6))
+fig,ax = plt.subplots(figsize=(12, 6))
 plt.bar(emisiones_por_año.index, emisiones_por_año.values, color='gray')
 
 # Resaltar el año con más emisiones
@@ -157,14 +162,15 @@ plt.legend()
 
 # Rotar etiquetas y reducir cantidad mostrada de 5 en 5 años
 plt.xticks(emisiones_por_año.index[::5], rotation=45, ha='right')
+st.pyplot(fig)
 
-plt.show()
+#plt.show()
 
 #variabilidad de acuerdo a las medias
 #en este caso observamos el carbón tiene la media mas alta en emisiones respecto al petroleo
 # y se puede dar ya que para producir una tonelada de energía: esto es 1,5 veces más que el gas; 1,3 veces más que el petróleo
 
-plt.figure(figsize=(10,6))
+fig,ax = plt.subplots(figsize=(10,6))
 ax = sns.boxplot(x='TipoIndustria', y='Valor', data=df, showmeans=True, meanprops={"marker":"o", "markerfacecolor":"red", "markeredgecolor":"black"})
 
 # Agregar etiquetas a la media
@@ -175,13 +181,16 @@ for i, mean in enumerate(medias):
 plt.title('Distribución de emisiones por industria')
 plt.xlabel('TipoIndustria')
 plt.ylabel('Emisiones de CO₂')
-plt.show()
+st.pyplot(fig)
+#plt.show()
 
 """# **Generación Capacidad Electrica**"""
 
-dataFrame = pd.read_csv('/content/drive/MyDrive/ProyectoAnalisisDatos/Datos/Datagit/generacioncapacidadelectrica.csv', sep=',',encoding='ISO-8859-1')
+#dataFrame = pd.read_csv('/content/drive/MyDrive/ProyectoAnalisisDatos/Datos/Datagit/generacioncapacidadelectrica.csv', sep=',',encoding='ISO-8859-1')
 
-dataFrame
+dataFrame = pd.read_csv("/workspaces/ProyectoEnergiaColPy/generacioncapacidadelectrica.csv", sep=',',encoding='ISO-8859-1')
+
+#dataFrame
 
 dataFrameLD = dataFrame.rename(columns={'NombreFuente':'Nombre Fuente','NombrePais': 'Pais','NombreAnio': 'Año',
                                         'NombreUnidad':'Unidad','ValorProduccion':'Produccion'}).drop(columns=['IdGeneracionCap'])
@@ -191,12 +200,12 @@ dataFrameLD[dataFrameLD['Produccion'] > 0.0]
 suma_produccion = dataFrameLD.groupby(['Año', 'Nombre Fuente'])['Produccion'].sum().reset_index()
 suma_produccion['Produccion'] = suma_produccion['Produccion'].apply(lambda x: '{:,.0f}K'.format(x / 1e3))
 suma_produccion = suma_produccion[suma_produccion['Produccion'] != '0K']
-display(suma_produccion)
+#st.write(suma_produccion)
 
 promedio_produccion = dataFrameLD.groupby(['Año', 'Nombre Fuente'])['Produccion'].mean().reset_index()
 promedio_produccion['Produccion'] = promedio_produccion['Produccion'].apply(lambda x: '{:,.0f}K'.format(x / 1e3))
 promedio_produccion = promedio_produccion[promedio_produccion['Produccion'] != '0K']
-display(promedio_produccion)
+#st.write(promedio_produccion)
 
 produccion_por_fuente = promedio_produccion.groupby('Nombre Fuente')['Produccion'].apply(
     lambda x: x.str.replace('K', '').str.replace(',', '').astype(float).sum() if x.dtype == 'O' else x.sum()
@@ -209,7 +218,7 @@ produccion_por_fuente = produccion_por_fuente[produccion_por_fuente['Produccion'
 # Paso 2: Crear la torta
 ##plt.figure(figsize=(8, 8))
 ##plt.pie(produccion_por_fuente['Produccion'], labels=produccion_por_fuente['Nombre Fuente'], autopct='%1.1f%%', startangle=90, colors=plt.cm.Paired.colors)
-plt.figure(figsize=(8, 8) , facecolor='whitesmoke')
+fig,ax = plt.subplots(figsize=(8, 8) , facecolor='whitesmoke')
 plt.pie(produccion_por_fuente['Produccion'], labels=produccion_por_fuente['Nombre Fuente'],autopct='%1.1f%%')
 plt.grid(True)
 
@@ -218,7 +227,8 @@ plt.title('Distribución de la Producción por Fuente de Energía desde el año 
 
 
 # Mostrar el gráfico
-plt.show()
+st.pyplot(fig)
+#plt.show()
 
 # Paso 1: Agrupar los datos por 'Año' y 'Nombre Fuente' y calcular el promedio de producción
 promedio_produccion = dataFrameLD.groupby(['Año', 'Nombre Fuente'])['Produccion'].mean().reset_index()
@@ -227,7 +237,7 @@ promedio_produccion = dataFrameLD.groupby(['Año', 'Nombre Fuente'])['Produccion
 max_produccion = promedio_produccion.loc[promedio_produccion.groupby('Año')['Produccion'].idxmax()]
 
 # Paso 3: Crear la gráfica de dispersión usando Seaborn
-plt.figure(figsize=(12, 6))  # Ajustar el tamaño de la figura
+fig,ax = plt.subplots(figsize=(12, 6))  # Ajustar el tamaño de la figura
 
 sns.scatterplot(data=max_produccion,
                 x='Año',
@@ -261,7 +271,8 @@ plt.legend(title="Fuente de Energía", loc='upper left', bbox_to_anchor=(1, 1)) 
 plt.tight_layout()
 
 # Mostrar el gráfico
-plt.show()
+st.pyplot(fig)
+#plt.show()
 
 # 1. Agrupar por Año y Fuente y calcular la producción promedio
 promedio_produccion = dataFrameLD.groupby(['Año', 'Nombre Fuente'])['Produccion'].mean().reset_index()
@@ -311,7 +322,7 @@ modelo_tr.fit(X_tr, y_tr)
 y_pred_tr = modelo_tr.predict(X_tr)
 
 # 4. Graficar los puntos reales y las líneas de regresión para cada fuente en una sola figura
-plt.figure(figsize=(12, 7))
+fig,ax = plt.subplots(figsize=(12, 7))
 
 # Fuente Hidro
 plt.scatter(X_h, y_h, color='blue', label='Datos reales - Hidro')
@@ -339,7 +350,8 @@ plt.title('Regresión Lineal: Producción por Fuente vs Año')
 plt.legend(loc='upper left')
 plt.grid(True)
 plt.tight_layout()
-plt.show()
+st.pyplot(fig)
+#plt.show()
 
 # 5. Mostrar coeficientes de cada modelo (incluyendo térmica renovable)
 print("Modelo para Hidro:")
@@ -364,9 +376,11 @@ print(f"  Intercepto: {modelo_tr.intercept_:,.2f} GWh\n")
 
 """# **Zonas No Interconectadas**"""
 
-dataFrameZNI = pd.read_csv('/content/drive/MyDrive/ProyectoAnalisisDatos/Datos/Datagit/ZonasNoInterconectadas.csv', sep=';',encoding='ISO-8859-1')
+#dataFrameZNI = pd.read_csv('/content/drive/MyDrive/ProyectoAnalisisDatos/Datos/Datagit/ZonasNoInterconectadas.csv', sep=';',encoding='ISO-8859-1')
 
-dataFrameZNI
+dataFrameZNI = pd.read_csv("/workspaces/ProyectoEnergiaColPy/ZonasNoInterconectadas.csv", sep=';',encoding='ISO-8859-1')
+
+#dataFrameZNI
 
 data_agrupada_ano_departamento = dataFrameZNI.groupby(['Anio', 'NombreDepartamento'])[['EnergiaActiva', 'EnergiaReactiva']].mean().reset_index()
 
@@ -398,7 +412,8 @@ ax.legend()
 # Mostrar el gráfico
 plt.tight_layout()
 plt.grid(True)
-plt.show()
+st.pyplot(fig)
+#plt.show()
 
 data_agrupada_ano_departamento = dataFrameZNI.groupby(['Anio', 'NombreDepartamento'])[['EnergiaActiva', 'PotenciaMaxima']].mean().reset_index()
 
@@ -430,13 +445,14 @@ ax.legend()
 # Mostrar el gráfico
 plt.tight_layout()
 plt.grid(True)
-plt.show()
+st.pyplot(fig)
+#plt.show()
 
 # Agrupar los datos por Año y Municipio, y calcular el promedio de Potencia Máxima
 data_tendencia_potencia = dataFrameZNI.groupby(['Anio', 'NombreDepartamento'])['PotenciaMaxima'].mean().reset_index()
 
 # Crear la gráfica de líneas para cada municipio
-plt.figure(figsize=(12, 7))
+fig,ax = plt.subplots(figsize=(12, 7))
 
 # Iterar sobre cada municipio para dibujar su tendencia
 municipios = data_tendencia_potencia['NombreDepartamento'].unique()
@@ -453,24 +469,6 @@ plt.title('Evolución de la Potencia Máxima por Departamento', fontsize=14)
 plt.grid(True)
 plt.legend(title='Departamento', bbox_to_anchor=(1.05, 1), loc='upper left')  # Leyenda fuera del área principal
 plt.tight_layout()
-plt.show()
+st.pyplot(fig)
+#plt.show()
 
-# Commented out IPython magic to ensure Python compatibility.
-# %%writefile app.py
-# import streamlit as st
-# st.title('Mi Aplicación Streamlit en Colab')
-# st.write('¡Hola, mundo!')
-#
-
-!curl https://loca.lt/mytunnelpassword
-
-!sreamlit run app.py &>/content/logs.txt &
-
-!npx localtunnel --port 8501
-
-import os
-print(os.listdir())
-
-!jupyter nbconvert --to script /https://colab.research.google.com/drive/1fBBl22UdVIJmCXinmUs61F6uiB6cl6t4?usp=drive_link
-
-!jupyter nbconvert --to python CopEnergiaColV1.ipynb
