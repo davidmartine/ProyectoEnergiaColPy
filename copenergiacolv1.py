@@ -194,8 +194,8 @@ dataFrame = pd.read_csv("/workspaces/ProyectoEnergiaColPy/generacioncapacidadele
 
 dataFrameLD = dataFrame.rename(columns={'NombreFuente':'Nombre Fuente','NombrePais': 'Pais','NombreAnio': 'Año',
                                         'NombreUnidad':'Unidad','ValorProduccion':'Produccion'}).drop(columns=['IdGeneracionCap'])
-dataFrameLD[['Nombre Fuente', 'Año', 'Produccion']]
-dataFrameLD[dataFrameLD['Produccion'] > 0.0]
+#dataFrameLD[['Nombre Fuente', 'Año', 'Produccion']]
+#dataFrameLD[dataFrameLD['Produccion'] > 0.0]
 
 suma_produccion = dataFrameLD.groupby(['Año', 'Nombre Fuente'])['Produccion'].sum().reset_index()
 suma_produccion['Produccion'] = suma_produccion['Produccion'].apply(lambda x: '{:,.0f}K'.format(x / 1e3))
