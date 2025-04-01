@@ -404,7 +404,7 @@ rects2 = ax.bar(index + bar_width, data_agrupada_ano['EnergiaReactiva'], bar_wid
 # Etiquetas y título
 ax.set_xlabel('NombreDepartamento', fontsize=12)
 ax.set_ylabel('Promedio (unidades)', fontsize=12)
-ax.set_title('Promedio de Energía Activa y Potencia Máxima por Departamento', fontsize=14)
+ax.set_title('Promedio de Energía Activa y Energía Reactiva Máxima por Departamento', fontsize=14)
 ax.set_xticks(index + bar_width / 2)
 ax.set_xticklabels(data_agrupada_ano['NombreDepartamento'], rotation=45)
 ax.legend()
@@ -449,26 +449,69 @@ st.pyplot(fig)
 #plt.show()
 
 # Agrupar los datos por Año y Municipio, y calcular el promedio de Potencia Máxima
+#data_tendencia_potencia = dataFrameZNI.groupby(['Anio', 'NombreDepartamento'])['PotenciaMaxima'].mean().reset_index()
+
+# Crear la gráfica de líneas para cada municipio
+#fig,ax = plt.subplots(figsize=(12, 7))
+
+# Iterar sobre cada municipio para dibujar su tendencia
+#municipios = data_tendencia_potencia['NombreDepartamento'].unique()
+#for municipio in municipios:
+#    # Filtrar datos del municipio
+#    datos_municipio = data_tendencia_potencia[data_tendencia_potencia['NombreDepartamento'] == municipio]
+#    # Crear la línea
+#    plt.plot(datos_municipio['Anio'], datos_municipio['PotenciaMaxima'], marker='o', label=municipio)
+
+# Estilo de la gráfica
+#plt.xlabel('Año', fontsize=12)
+#plt.ylabel('Promedio de Potencia Máxima (unidades)', fontsize=12)
+#plt.title('Evolución de la Potencia Máxima por Departamento', fontsize=14)
+#plt.grid(True)
+#plt.legend(title='Departamento', bbox_to_anchor=(1.05, 1), loc='upper left')  # Leyenda fuera del área principal
+#plt.tight_layout()
+#st.pyplot(fig)
+#plt.show()
+
+##--------------------------------
+
+# Agrupar los datos por Año y Departamento, y calcular el promedio de Potencia Máxima
 data_tendencia_potencia = dataFrameZNI.groupby(['Anio', 'NombreDepartamento'])['PotenciaMaxima'].mean().reset_index()
 
 # Crear la gráfica de líneas para cada municipio
-fig,ax = plt.subplots(figsize=(12, 7))
+fig, ax = plt.subplots(figsize=(12, 7))
+
+# Obtener una lista de departamentos y asignarles un color diferente
+municipios = data_tendencia_potencia['NombreDepartamento'].unique()
+
+# Crear un colormap para asignar un color único a cada línea
+colormap = plt.cm.get_cmap('tab20')  # Obtener el colormap
+
+# Normalizar el número de colores para que se repartan entre los departamentos
+norm = plt.Normalize(0, len(municipios)-1)  # Normalizamos para tener un valor entre 0 y el número de municipios - 1
 
 # Iterar sobre cada municipio para dibujar su tendencia
-municipios = data_tendencia_potencia['NombreDepartamento'].unique()
-for municipio in municipios:
-    # Filtrar datos del municipio
+for i, municipio in enumerate(municipios):
+    # Filtrar los datos del municipio
     datos_municipio = data_tendencia_potencia[data_tendencia_potencia['NombreDepartamento'] == municipio]
-    # Crear la línea
-    plt.plot(datos_municipio['Anio'], datos_municipio['PotenciaMaxima'], marker='o', label=municipio)
+    
+    # Crear la línea con el color asignado usando la normalización
+    color = colormap(norm(i))  # Asignar un color basado en el índice del municipio
+    ax.plot(datos_municipio['Anio'], datos_municipio['PotenciaMaxima'], marker='o', label=municipio, color=color)
 
 # Estilo de la gráfica
-plt.xlabel('Año', fontsize=12)
-plt.ylabel('Promedio de Potencia Máxima (unidades)', fontsize=12)
-plt.title('Evolución de la Potencia Máxima por Departamento', fontsize=14)
-plt.grid(True)
-plt.legend(title='Departamento', bbox_to_anchor=(1.05, 1), loc='upper left')  # Leyenda fuera del área principal
-plt.tight_layout()
-st.pyplot(fig)
-#plt.show()
+ax.set_xlabel('Año', fontsize=12)
+ax.set_ylabel('Promedio de Potencia Máxima (unidades)', fontsize=12)
+ax.set_title('Evolución de la Potencia Máxima por Departamento', fontsize=14)
+ax.grid(True)
 
+# Leyenda fuera del área principal
+ax.legend(title='Departamento', bbox_to_anchor=(1.05, 1), loc='upper left')
+
+# Ajustar el layout para evitar solapamientos
+plt.tight_layout()
+
+# Mostrar la gráfica (en Streamlit se usa st.pyplot)
+st.pyplot(fig)
+
+# Si no estás usando Streamlit, puedes descomentar la siguiente línea para ver la gráfica
+# plt.show()
