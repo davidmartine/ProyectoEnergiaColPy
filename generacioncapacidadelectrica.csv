@@ -1,0 +1,177 @@
+"IdGeneracionCap","NombreFuente","NombrePais","NombreAnio","NombreUnidad","ValorProduccion"
+1,"térmica renovable","colombia","2021","gwh",79714528.0
+2,"térmica renovable","colombia","2020","gwh",7257880064.0
+3,"térmica renovable","colombia","2019","gwh",6961332736.0
+4,"térmica renovable","colombia","2018","gwh",7300788736.0
+5,"térmica renovable","colombia","2017","gwh",6324473344.0
+6,"térmica renovable","colombia","2016","gwh",5978140672.0
+7,"térmica renovable","colombia","2015","gwh",5138526208.0
+8,"térmica renovable","colombia","2014","gwh",4417068032.0
+9,"térmica renovable","colombia","2013","gwh",3489880320.0
+10,"térmica renovable","colombia","2012","gwh",3438571776.0
+11,"térmica renovable","colombia","2011","gwh",3113579776.0
+12,"térmica renovable","colombia","2010","gwh",2049860608.0
+13,"térmica renovable","colombia","2009","gwh",1039936064.0
+14,"térmica renovable","colombia","2008","gwh",4835507200.0
+15,"térmica renovable","colombia","2007","gwh",6933824000.0
+16,"térmica renovable","colombia","2006","gwh",8776290304.0
+17,"térmica renovable","colombia","2005","gwh",1091574016.0
+18,"térmica renovable","colombia","2004","gwh",1156766976.0
+19,"térmica renovable","colombia","2003","gwh",10527029.0
+20,"térmica renovable","colombia","2002","gwh",10286308.0
+21,"térmica renovable","colombia","2001","gwh",99081384.0
+22,"térmica renovable","colombia","2000","gwh",10478856.0
+23,"otros","colombia","2021","gwh",0.0
+24,"otros","colombia","2020","gwh",0.0
+25,"otros","colombia","2019","gwh",0.0
+26,"otros","colombia","2018","gwh",0.0
+27,"otros","colombia","2017","gwh",0.0
+28,"otros","colombia","2016","gwh",0.0
+29,"otros","colombia","2015","gwh",0.0
+30,"otros","colombia","2014","gwh",0.0
+31,"otros","colombia","2013","gwh",0.0
+32,"otros","colombia","2012","gwh",0.0
+33,"otros","colombia","2011","gwh",0.0
+34,"otros","colombia","2010","gwh",0.0
+35,"otros","colombia","2009","gwh",0.0
+36,"otros","colombia","2008","gwh",0.0
+37,"otros","colombia","2007","gwh",0.0
+38,"otros","colombia","2006","gwh",0.0
+39,"otros","colombia","2005","gwh",0.0
+40,"otros","colombia","2004","gwh",0.0
+41,"otros","colombia","2003","gwh",0.0
+42,"otros","colombia","2002","gwh",0.0
+43,"otros","colombia","2001","gwh",0.0
+44,"otros","colombia","2000","gwh",0.0
+45,"solar","colombia","2021","gwh",32301688.0
+46,"solar","colombia","2020","gwh",1907960320.0
+47,"solar","colombia","2019","gwh",1312260224.0
+48,"solar","colombia","2018","gwh",1199982080.0
+49,"solar","colombia","2017","gwh",538760704.0
+50,"solar","colombia","2016","gwh",0.0
+51,"solar","colombia","2015","gwh",0.0
+52,"solar","colombia","2014","gwh",0.0
+53,"solar","colombia","2013","gwh",0.0
+54,"solar","colombia","2012","gwh",0.0
+55,"solar","colombia","2011","gwh",0.0
+56,"solar","colombia","2010","gwh",0.0
+57,"solar","colombia","2009","gwh",0.0
+58,"solar","colombia","2008","gwh",0.0
+59,"solar","colombia","2007","gwh",0.0
+60,"solar","colombia","2006","gwh",0.0
+61,"solar","colombia","2005","gwh",0.0
+62,"solar","colombia","2004","gwh",0.0
+63,"solar","colombia","2003","gwh",0.0
+64,"solar","colombia","2002","gwh",0.0
+65,"solar","colombia","2001","gwh",0.0
+66,"solar","colombia","2000","gwh",0.0
+67,"eólica","colombia","2021","gwh",6046202.0
+68,"eólica","colombia","2020","gwh",1011660800.0
+69,"eólica","colombia","2019","gwh",6292682752.0
+70,"eólica","colombia","2018","gwh",4343735296.0
+71,"eólica","colombia","2017","gwh",307141920.0
+72,"eólica","colombia","2016","gwh",5088734208.0
+73,"eólica","colombia","2015","gwh",6837744640.0
+74,"eólica","colombia","2014","gwh",7023029760.0
+75,"eólica","colombia","2013","gwh",576248000.0
+76,"eólica","colombia","2012","gwh",5485471232.0
+77,"eólica","colombia","2011","gwh",4127194368.0
+78,"eólica","colombia","2010","gwh",3856992000.0
+79,"eólica","colombia","2009","gwh",5770781184.0
+80,"eólica","colombia","2008","gwh",5391816704.0
+81,"eólica","colombia","2007","gwh",4989097472.0
+82,"eólica","colombia","2006","gwh",6298139136.0
+83,"eólica","colombia","2005","gwh",4955056128.0
+84,"eólica","colombia","2004","gwh",5071362560.0
+85,"eólica","colombia","2003","gwh",0.0
+86,"eólica","colombia","2002","gwh",0.0
+87,"eólica","colombia","2001","gwh",0.0
+88,"eólica","colombia","2000","gwh",0.0
+89,"geotermia","colombia","2021","gwh",0.0
+90,"geotermia","colombia","2020","gwh",0.0
+91,"geotermia","colombia","2019","gwh",0.0
+92,"geotermia","colombia","2018","gwh",0.0
+93,"geotermia","colombia","2017","gwh",0.0
+94,"geotermia","colombia","2016","gwh",0.0
+95,"geotermia","colombia","2015","gwh",0.0
+96,"geotermia","colombia","2014","gwh",0.0
+97,"geotermia","colombia","2013","gwh",0.0
+98,"geotermia","colombia","2012","gwh",0.0
+99,"geotermia","colombia","2011","gwh",0.0
+100,"geotermia","colombia","2010","gwh",0.0
+101,"geotermia","colombia","2009","gwh",0.0
+102,"geotermia","colombia","2008","gwh",0.0
+103,"geotermia","colombia","2007","gwh",0.0
+104,"geotermia","colombia","2006","gwh",0.0
+105,"geotermia","colombia","2005","gwh",0.0
+106,"geotermia","colombia","2004","gwh",0.0
+107,"geotermia","colombia","2003","gwh",0.0
+108,"geotermia","colombia","2002","gwh",0.0
+109,"geotermia","colombia","2001","gwh",0.0
+110,"geotermia","colombia","2000","gwh",0.0
+111,"nuclear","colombia","2021","gwh",0.0
+112,"nuclear","colombia","2020","gwh",0.0
+113,"nuclear","colombia","2019","gwh",0.0
+114,"nuclear","colombia","2018","gwh",0.0
+115,"nuclear","colombia","2017","gwh",0.0
+116,"nuclear","colombia","2016","gwh",0.0
+117,"nuclear","colombia","2015","gwh",0.0
+118,"nuclear","colombia","2014","gwh",0.0
+119,"nuclear","colombia","2013","gwh",0.0
+120,"nuclear","colombia","2012","gwh",0.0
+121,"nuclear","colombia","2011","gwh",0.0
+122,"nuclear","colombia","2010","gwh",0.0
+123,"nuclear","colombia","2009","gwh",0.0
+124,"nuclear","colombia","2008","gwh",0.0
+125,"nuclear","colombia","2007","gwh",0.0
+126,"nuclear","colombia","2006","gwh",0.0
+127,"nuclear","colombia","2005","gwh",0.0
+128,"nuclear","colombia","2004","gwh",0.0
+129,"nuclear","colombia","2003","gwh",0.0
+130,"nuclear","colombia","2002","gwh",0.0
+131,"nuclear","colombia","2001","gwh",0.0
+132,"nuclear","colombia","2000","gwh",0.0
+133,"térmica no renovable","colombia","2021","gwh",122569408.0
+134,"térmica no renovable","colombia","2020","gwh",1855950208.0
+135,"térmica no renovable","colombia","2019","gwh",1466682240.0
+136,"térmica no renovable","colombia","2018","gwh",1077617408.0
+137,"térmica no renovable","colombia","2017","gwh",8656314368.0
+138,"térmica no renovable","colombia","2016","gwh",1846517504.0
+139,"térmica no renovable","colombia","2015","gwh",2128434176.0
+140,"térmica no renovable","colombia","2014","gwh",1907395456.0
+141,"térmica no renovable","colombia","2013","gwh",1742718464.0
+142,"térmica no renovable","colombia","2012","gwh",1190964864.0
+143,"térmica no renovable","colombia","2011","gwh",9740621824.0
+144,"térmica no renovable","colombia","2010","gwh",1598661248.0
+145,"térmica no renovable","colombia","2009","gwh",1490612480.0
+146,"térmica no renovable","colombia","2008","gwh",8131842048.0
+147,"térmica no renovable","colombia","2007","gwh",9264796672.0
+148,"térmica no renovable","colombia","2006","gwh",9631412224.0
+149,"térmica no renovable","colombia","2005","gwh",9292096512.0
+150,"térmica no renovable","colombia","2004","gwh",8546767360.0
+151,"térmica no renovable","colombia","2003","gwh",9432278016.0
+152,"térmica no renovable","colombia","2002","gwh",9962020864.0
+153,"térmica no renovable","colombia","2001","gwh",1050971584.0
+154,"térmica no renovable","colombia","2000","gwh",1009902336.0
+155,"hidro","colombia","2021","gwh",6049598464.0
+156,"hidro","colombia","2020","gwh",4983735296.0
+157,"hidro","colombia","2019","gwh",5414455296.0
+158,"hidro","colombia","2018","gwh",5664701440.0
+159,"hidro","colombia","2017","gwh",573418944.0
+160,"hidro","colombia","2016","gwh",4678792704.0
+161,"hidro","colombia","2015","gwh",4468190208.0
+162,"hidro","colombia","2014","gwh",447419648.0
+163,"hidro","colombia","2013","gwh",4436278784.0
+164,"hidro","colombia","2012","gwh",4758171136.0
+165,"hidro","colombia","2011","gwh",4842747904.0
+166,"hidro","colombia","2010","gwh",4055746304.0
+167,"hidro","colombia","2009","gwh",4083736576.0
+168,"hidro","colombia","2008","gwh",4616088064.0
+169,"hidro","colombia","2007","gwh",4424198144.0
+170,"hidro","colombia","2006","gwh",4255789056.0
+171,"hidro","colombia","2005","gwh",4097895424.0
+172,"hidro","colombia","2004","gwh",3984867072.0
+173,"hidro","colombia","2003","gwh",3719664896.0
+174,"hidro","colombia","2002","gwh",3467024384.0
+175,"hidro","colombia","2001","gwh",3243892480.0
+176,"hidro","colombia","2000","gwh",3107428352.0
