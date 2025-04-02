@@ -17,7 +17,7 @@ import streamlit as st
 #from google.colab import drive
 from scipy.interpolate import make_interp_spline
 from sklearn.linear_model import LinearRegression
-
+from PIL import Image
 
 
 
@@ -515,3 +515,9 @@ st.pyplot(fig)
 
 # Si no estás usando Streamlit, puedes descomentar la siguiente línea para ver la gráfica
 # plt.show()
+
+ImgMapa = Image.open("/workspaces/ProyectoEnergiaColPy/ImgMapa.jpeg")
+st.image(ImgMapa, caption='', use_container_width=True)
+
+ImgSeriT = Image.open("/workspaces/ProyectoEnergiaColPy/SerieTiempo.jpeg")
+st.image(ImgSeriT, caption='', use_container_width=True)
