@@ -21,7 +21,7 @@ from PIL import Image
 
 
 
-"""# **Conexión Emisón Fosil**"""
+"""# **Conexión Emisión Fosil**"""
 
 #df = pd.read_csv("/content/drive/MyDrive/ProyectoAnalisisDatos/Datos/Datagit/emisionfosil_trabajar_2.csv", sep = ";")
 df = pd.read_csv("/workspaces/ProyectoEnergiaColPy/emisionfosil_trabajar_2.csv", sep = ";")
